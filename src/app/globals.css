@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  background-color: #0d0d0d;
+  color: white;
+}
+
+/* Custom background pattern for coffee beans */
+.bg-coffee-beans {
+  background-image: url('/images/coffee-beans-pattern.jpg'); /* Adjust filename if different */
+  background-repeat: repeat; /* Makes the pattern tile */
+  background-size: 150px auto; /* Adjust size as needed, e.g., 'auto', '200px', 'contain' */
+  background-attachment: fixed; /* Optional: Makes background scroll with content */
+}
+
+/* Ensure the hero section doesn't hide the pattern below it */
+.hero-overlay {
+  background-color: rgba(13, 13, 13, 0.9); /* Dark overlay to make text readable */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
