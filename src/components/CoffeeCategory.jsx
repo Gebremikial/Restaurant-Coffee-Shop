@@ -3,13 +3,13 @@ import Image from 'next/image';
 const leftItems = [
   { title: "Cappuccino", desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit." },
   { title: "Cafe latte", desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit." },
-  { title: "Dark coffee", desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit." },
+  { title: "Dark coffee", desc: "Strong, bold, and pure black coffee." },
 ];
 
 const rightItems = [
-  { title: "Turkish coffee", desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit." },
-  { title: "Pancakes", desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit." },
-  { title: "Coffee Bag", desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit." },
+  { title: "Turkish coffee", desc: "Fine ground coffee boiled to perfection." },
+  { title: "Pancakes", desc: "Fluffy pancakes served with maple syrup." },
+  { title: "Coffee Bag", desc: "Freshly roasted beans for your home." },
 ];
 
 export default function CoffeeCategory() {
@@ -26,7 +26,7 @@ export default function CoffeeCategory() {
         </p>
       </div>
 
-      <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-4">
+      <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-8">
         
         {/* LEFT SIDE: First 3 items */}
         <div className="flex-1 space-y-12 w-full">
@@ -43,10 +43,11 @@ export default function CoffeeCategory() {
           ))}
         </div>
 
-        {/* CENTER: Your Local Image */}
+        {/* CENTER: Image */}
+        {/* Note: If your file is img 21.jpg, change the extension below */}
         <div className="flex-1 relative w-full max-w-[400px] aspect-square flex justify-center items-center">
           <Image 
-            src="/images/img-21.png" // Updated to use dash, no 'public' prefix
+            src="/images/img-21.png" 
             alt="Main Coffee" 
             fill 
             className="object-contain"
@@ -68,7 +69,6 @@ export default function CoffeeCategory() {
             </div>
           ))}
         </div>
-
       </div>
     </section>
   );
