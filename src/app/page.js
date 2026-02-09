@@ -2,6 +2,13 @@ import Navbar from '../components/Navbar';
 import Hero from '../components/Hero';
 import AboutUs from '../components/AboutUs';
 import CoffeeCategory from '../components/CoffeeCategory';
+import WhyChooseUs from '../components/WhyChooseUs'; 
+import OurFavoritesMenu from '../components/OurFavoritesMenu';
+import MeetOurChef from '../components/MeetOurChef';
+import OurCustomerSay from '../components/OurCustomerSay';
+import Blog from '../components/Blog';
+import Connection from '../components/Connection';
+import Footer from '../components/Footer';
 
 export default function Home() {
   return (
@@ -14,6 +21,13 @@ export default function Home() {
         <Hero />
         <AboutUs />
         <CoffeeCategory />
+        <WhyChooseUs />
+        <OurFavoritesMenu />
+        <MeetOurChef />
+        <OurCustomerSay />
+        <Blog />
+        <Connection />
+        <Footer />
       </div>
     </main>
   );

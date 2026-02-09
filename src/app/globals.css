@@ -2,18 +2,32 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  background-color: hsl(0, 0%, 100%);
-  color: hsl(0, 0%, 31%);
-  margin: 0;
+:root {
+  --coffee-text: hsl(0, 0%, 31%);
 }
 
-.bg-coffee-pattern {
-  background-image: url('/images/img-15.jpg'); /* Updated path */
-  background-repeat: repeat;
-  background-size: 250px;
-  opacity: 0.04;
+body {
+  background-color: #ffffff;
+  color: var(--coffee-text);
+  margin: 0;
+  padding: 0;
+}
+
+/* This creates the repeating bean pattern across the whole site */
+.bg-coffee-beans {
+  position: relative;
+  background-color: #ffffff;
+}
+
+.bg-coffee-beans::before {
+  content: "";
   position: fixed;
   inset: 0;
+  /* Make sure pattern.png is actually in public/images/ */
+  background-image: url('/images/pattern.png'); 
+  background-repeat: repeat;
+  background-size: 200px;
+  opacity: 0.05; /* Keeps it subtle so text is readable */
   z-index: -1;
+  pointer-events: none;
 }

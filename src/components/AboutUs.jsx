@@ -1,74 +1,84 @@
 import Image from 'next/image';
-import { CheckIcon } from '@heroicons/react/24/outline';
+import { Check } from 'lucide-react'; // Make sure to install lucide-react or use a custom SVG
 
 export default function AboutUs() {
+  const textColor = "#333333";
+
   return (
-    <section className="relative py-20 px-6 lg:px-24 z-10 overflow-hidden">
+    <section className="relative z-10 py-20 px-6 lg:px-24 bg-white overflow-hidden">
       <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
         
-        {/* Left Side: Staggered Images */}
+        {/* Left Side: Overlapping Image Layout */}
         <div className="relative">
-          {/* Main Large Image (Top Right) */}
-          <div className="relative w-[80%] aspect-[4/5] ml-auto rounded-lg overflow-hidden shadow-2xl">
+          {/* Main Large Image */}
+          <div className="relative w-full aspect-[4/5] lg:w-[90%]">
             <Image 
-                src="/images/img-16.png" 
-                alt="About Us" 
-                fill 
-                className="object-cover" 
+              src="/images/img-4.png" // Updated to .png per your sidebar
+              alt="Pouring Milk" 
+              fill 
+              className="object-cover rounded-sm shadow-md"
+              priority
             />
           </div>
 
-          {/* Overlapping Smaller Image (Bottom Left) */}
-          <div className="absolute bottom-[-10%] left-0 w-[60%] aspect-square rounded-lg overflow-hidden border-8 border-[#0D0D0D] shadow-2xl z-20">
+          {/* Overlapping Small Image */}
+          <div className="absolute -bottom-10 -left-6 w-[60%] aspect-video border-8 border-white shadow-2xl z-20">
             <Image 
-                src="/images/img-14.png" 
-                alt="Coffee" 
-                fill 
-                className="object-cover" 
+              src="/images/img-5.png" // Updated to .png per your sidebar
+              alt="Coffee Cup" 
+              fill 
+              className="object-cover"
             />
           </div>
 
-          {/* Decorative Dot Pattern (Middle) */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-24 h-32 opacity-20 z-10 hidden md:block" 
-               style={{ backgroundImage: 'radial-gradient(#BC9A6C 2px, transparent 2px)', backgroundSize: '15px 15px' }}>
+          {/* Decorative Dot Pattern (Centered between columns) */}
+          <div className="absolute top-1/2 -right-12 -translate-y-1/2 hidden xl:block z-0 opacity-40">
+            <div className="grid grid-cols-5 gap-4">
+              {[...Array(25)].map((_, i) => (
+                <div key={i} className="w-2 h-2 rounded-full bg-[#BC9A6C]" />
+              ))}
+            </div>
           </div>
         </div>
 
         {/* Right Side: Content */}
-        <div className="space-y-6 text-white">
-          <div className="space-y-2">
-            <p className="text-black font-tight text-xl">About us</p>
-            <h2 className="text-black text-4xl lg:text-5xl font-bold leading-tight">
-              We are the best quality <br /> Coffee maker
-            </h2>
+        <div className="space-y-6 lg:pl-10">
+          <div className="flex items-center gap-2">
+            <span className="text-[#BC9A6C] font-medium tracking-widest uppercase text-sm">
+              About us
+            </span>
+            <div className="h-[1px] w-12 bg-[#BC9A6C]"></div>
           </div>
 
-          <p className="text-gray-600 leading-relaxed text-sm lg:text-base">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque diam pellentesque bibendum non dui volutpat fringilla bibendum. Urna, elit augue urna, vitae feugiat pretium donec id elementum. Ultrices mattis sed vitae mus risus. Lacus nisi, et ac dapibus sit eu velit in consequat.
+          <h2 className="text-5xl lg:text-6xl font-bold leading-tight text-[#1a1a1a]">
+            We are the best quality <br /> Coffee maker
+          </h2>
+
+          <p className="text-gray-500 leading-relaxed text-lg">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque diam pellentesque bibendum non dui volutpat fringilla bibendum. Urna, elit augue urna, vitae feugiat pretium donec id elementum.
           </p>
 
           {/* Features List */}
-          <ul className="space-y-4 pt-2">
+          <ul className="space-y-4 pt-4">
             {[
               "Experienced Chefs",
               "Fresh & Organic Foods",
               "Different Coffee & Drinks"
-            ].map((feature, index) => (
-              <li key={index} className="flex items-center gap-3">
-                <div className="flex-shrink-0 w-5 h-5 bg-[#BC9A6C]/20 rounded flex items-center justify-center">
-                  <CheckIcon className="w-4 h-4 text-[#BC9A6C]" />
+            ].map((item, index) => (
+              <li key={index} className="flex items-center gap-4 group">
+                <div className={`flex items-center justify-center w-8 h-8 rounded-sm transition-colors ${index === 1 ? 'bg-[#333] text-white' : 'bg-gray-100 text-gray-400'}`}>
+                  <Check size={18} strokeWidth={3} />
                 </div>
-                <span className="text-black font-medium">{feature}</span>
+                <span className="font-bold text-[#333] text-lg">{item}</span>
               </li>
             ))}
           </ul>
 
-          <button className="mt-4 bg-[#BC9A6C] text-white py-3 px-10 rounded-md hover:bg-[#a6865a] transition-all flex items-center gap-2 group">
-            Learn More
-            <span className="group-hover:translate-x-1 transition-transform">→</span>
+          <button className="mt-8 bg-[#BC9A6C] hover:bg-[#a6865a] text-white font-bold py-4 px-10 rounded-sm transition-all flex items-center gap-2">
+            Learn More 
+            <span>→</span>
           </button>
         </div>
-
       </div>
     </section>
   );
