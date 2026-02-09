@@ -19,31 +19,38 @@ const products = [
 
 export default function OurFavoritesMenu() {
   return (
-    <section className="py-24 px-6 lg:px-24 bg-white">
-      {/* Header */}
-      <div className="max-w-7xl mx-auto text-center mb-16">
-        <h2 className="text-5xl font-bold mb-4 text-[#1a1a1a]">Our Favorites Menu</h2>
-        <p className="text-gray-400 max-w-xl mx-auto">
+    <section id="our-favorites" className="py-16 lg:py-20 px-6 lg:px-20 bg-white">
+      {/* Refined Header - matching smaller scale */}
+      <div className="max-w-5xl mx-auto text-center mb-12">
+         <div className="flex items-center justify-center gap-2 mb-3">
+            <span className="text-[#BC9A6C] font-semibold tracking-[0.15em] uppercase text-[10px] lg:text-[11px]">
+              Our Menu
+            </span>
+            <div className="h-[1px] w-8 bg-[#BC9A6C]/70"></div>
+          </div>
+        <h2 className="text-3xl lg:text-4xl font-bold mb-3 text-[#1a1a1a]">Our Favorites Menu</h2>
+        <p className="text-gray-400 max-w-lg mx-auto text-[13px] leading-relaxed">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. <br />
           Varius sed pharetra dictum neque massa congue
         </p>
       </div>
 
-      <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-8">
+      {/* Reduced max-width to 6xl for centering */}
+      <div className="max-w-6xl mx-auto flex flex-col lg:flex-row gap-6 lg:gap-10">
         
-        {/* LEFT SIDE: CATEGORY SIDEBAR */}
-        <div className="w-full lg:w-1/4 bg-[#F9F7F2] p-6 h-fit">
-          <div className="space-y-4">
+        {/* LEFT SIDE: CATEGORY SIDEBAR - Made slimmer */}
+        <div className="w-full lg:w-[22%] bg-[#F9F7F2] p-4 h-fit rounded-sm">
+          <div className="space-y-2.5">
             {categories.map((cat, index) => (
               <button
                 key={index}
-                className={`w-full flex items-center gap-4 px-6 py-4 rounded-sm font-bold transition-all ${
+                className={`w-full flex items-center gap-3 px-4 py-3 rounded-sm text-[13px] font-bold transition-all ${
                   cat.active 
-                    ? 'bg-[#BC9A6C] text-white shadow-lg' 
-                    : 'bg-white text-[#1a1a1a] hover:bg-gray-50'
+                    ? 'bg-[#BC9A6C] text-white shadow-md' 
+                    : 'bg-white text-[#1a1a1a] hover:bg-gray-50 border border-gray-100'
                 }`}
               >
-                <span className={`text-2xl ${cat.active ? 'text-white' : 'text-[#BC9A6C]'}`}>
+                <span className="text-lg">
                   {cat.icon}
                 </span>
                 {cat.name}
@@ -52,51 +59,51 @@ export default function OurFavoritesMenu() {
           </div>
         </div>
 
-        {/* RIGHT SIDE: PRODUCT GRID */}
-        <div className="w-full lg:w-3/4">
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-y-12 gap-x-6">
+        {/* RIGHT SIDE: PRODUCT GRID - Scaled down info */}
+        <div className="w-full lg:w-[78%]">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-y-8 gap-x-5">
             {products.map((item) => (
               <div key={item.id} className="group cursor-pointer">
-                {/* Image Container - Now using .png extension */}
-                <div className="relative aspect-[4/3] overflow-hidden mb-4 bg-gray-100">
+                {/* Image Container */}
+                <div className="relative aspect-[1/1] overflow-hidden mb-3 bg-gray-50 rounded-sm">
                   <Image
                     src={`/images/img-${item.id}.png`}
                     alt={item.name}
                     fill
-                    className="object-cover transition-transform duration-500 group-hover:scale-110"
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                   {/* Action Icons Overlay */}
-                  <div className="absolute top-4 right-4 flex flex-col gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                    <div className="w-8 h-8 bg-white flex items-center justify-center shadow-md rounded-sm">
-                        <span className="text-xs">🛒</span>
+                  <div className="absolute top-3 right-3 flex flex-col gap-1.5 opacity-0 group-hover:opacity-100 translate-x-2 group-hover:translate-x-0 transition-all">
+                    <div className="w-7 h-7 bg-white flex items-center justify-center shadow-md rounded-sm hover:bg-[#BC9A6C] hover:text-white transition-colors">
+                        <span className="text-[10px]">🛒</span>
                     </div>
-                    <div className="w-8 h-8 bg-white flex items-center justify-center shadow-md rounded-sm">
-                        <span className="text-xs">❤️</span>
+                    <div className="w-7 h-7 bg-white flex items-center justify-center shadow-md rounded-sm hover:bg-[#BC9A6C] hover:text-white transition-colors">
+                        <span className="text-[10px]">❤️</span>
                     </div>
                   </div>
                 </div>
 
-                {/* Info */}
-                <div className="space-y-1">
+                {/* Info - Bolded and resized */}
+                <div className="space-y-0.5">
                   <div className="flex justify-between items-center">
-                    <h3 className="font-bold text-lg text-[#1a1a1a]">{item.name}</h3>
-                    <div className="flex text-[#BC9A6C] text-xs">
+                    <h3 className="font-bold text-sm lg:text-base text-[#1a1a1a]">{item.name}</h3>
+                    <div className="flex text-[#BC9A6C] text-[10px]">
                       {[...Array(item.rating)].map((_, i) => (
                         <span key={i}>★</span>
                       ))}
                     </div>
                   </div>
-                  <p className="text-[#BC9A6C] font-medium">{item.price}</p>
+                  <p className="text-[#BC9A6C] font-bold text-xs lg:text-sm">{item.price}</p>
                 </div>
               </div>
             ))}
           </div>
 
-          {/* Pagination Dots */}
-          <div className="flex justify-center gap-2 mt-16">
-            <div className="w-2 h-2 rounded-full bg-gray-200"></div>
-            <div className="w-2 h-2 rounded-full bg-[#BC9A6C]"></div>
-            <div className="w-2 h-2 rounded-full bg-gray-200"></div>
+          {/* Pagination Dots - Scaled down */}
+          <div className="flex justify-center gap-2 mt-12">
+            <div className="w-1.5 h-1.5 rounded-full bg-gray-200"></div>
+            <div className="w-1.5 h-1.5 rounded-full bg-[#BC9A6C]"></div>
+            <div className="w-1.5 h-1.5 rounded-full bg-gray-200"></div>
           </div>
         </div>
       </div>

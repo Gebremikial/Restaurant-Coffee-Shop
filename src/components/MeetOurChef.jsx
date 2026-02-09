@@ -9,7 +9,7 @@ const chefs = [
 
 export default function MeetOurChef() {
   return (
-    <section className="py-24 px-6 lg:px-24 bg-white">
+    <section id="chefs" className="py-24 px-6 lg:px-24 bg-white">
       {/* Header Section */}
       <div className="max-w-7xl mx-auto text-center mb-16">
         <h2 className="text-5xl font-bold mb-4 text-[#1a1a1a]">Meet our chef</h2>
