@@ -1,6 +1,6 @@
 "use client";
-import React, { useState } from 'react';
-import Link from 'next/link'; // <--- This was missing!
+import React, { useState, useRef, useEffect } from 'react';
+import Link from 'next/link';
 import { 
   MagnifyingGlassIcon, 
   UserIcon, 
@@ -12,6 +12,7 @@ import {
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
+  const searchInputRef = useRef(null); // Ref to focus the input
 
   const navLinks = [
     { name: 'Home', href: '#hero' },
@@ -22,6 +23,13 @@ export default function Navbar() {
     { name: 'Shop', href: '#chefs' },
     { name: 'Contact', href: '#footer' },
   ];
+
+  // Auto-focus logic when magnifying glass is clicked
+  useEffect(() => {
+    if (searchOpen && searchInputRef.current) {
+      searchInputRef.current.focus();
+    }
+  }, [searchOpen]);
 
   const handleScroll = (e, href) => {
     e.preventDefault();
@@ -66,34 +74,63 @@ export default function Navbar() {
 
         {/* Action Icons */}
         <div className="flex items-center space-x-5 text-white">
-          {/* Search Toggle */}
+          
+          {/* ENHANCED SEARCH BAR */}
           <div className="relative flex items-center">
             <input 
+              ref={searchInputRef}
               type="text" 
               placeholder="Search..." 
-              className={`bg-white/10 border border-white/20 rounded-sm px-3 py-1 text-xs focus:outline-none transition-all duration-300 ${searchOpen ? 'w-32 lg:w-48 opacity-100 mr-2' : 'w-0 opacity-0 pointer-events-none'}`}
+              onBlur={() => setSearchOpen(false)} // Hides bar when clicking outside
+              className={`bg-white/10 border border-white/20 rounded-sm px-3 py-1 text-xs focus:outline-none focus:border-[#BC9A6C] transition-all duration-500 ease-in-out ${
+                searchOpen ? 'w-32 lg:w-48 opacity-100 mr-2 translate-x-0' : 'w-0 opacity-0 pointer-events-none translate-x-4'
+              }`}
             />
-            <MagnifyingGlassIcon 
+            <button 
               onClick={() => setSearchOpen(!searchOpen)}
-              className="w-5 h-5 cursor-pointer hover:text-[#BC9A6C] transition-colors" 
-            />
+              className="focus:outline-none"
+            >
+              {searchOpen ? (
+                <XMarkIcon className="w-5 h-5 text-[#BC9A6C] transition-colors" />
+              ) : (
+                <MagnifyingGlassIcon className="w-5 h-5 cursor-pointer hover:text-[#BC9A6C] transition-colors" />
+              )}
+            </button>
           </div>
 
-          {/* User Icon -> Login/Signup (Fixed with Link) */}
+          {/* User Icon -> Login/Signup */}
           <Link href="/login" className="hover:text-[#BC9A6C] transition-colors">
             <UserIcon className="w-5 h-5" />
           </Link>
 
+          {/* Cart Icon */}
           <div className="relative">
-            <ShoppingBagIcon className="w-5 h-5 cursor-pointer hover:text-[#BC9A6C]" />
+            <ShoppingBagIcon className="w-5 h-5 cursor-pointer hover:text-[#BC9A6C] transition-colors" />
             <span className="absolute -top-1.5 -right-1.5 bg-[#BC9A6C] text-white text-[9px] font-bold w-4 h-4 flex items-center justify-center rounded-full">3</span>
           </div>
 
+          {/* Mobile Menu Toggle */}
           <button className="lg:hidden text-white ml-2" onClick={() => setIsOpen(!isOpen)}>
             {isOpen ? <XMarkIcon className="w-7 h-7" /> : <Bars3Icon className="w-7 h-7" />}
           </button>
         </div>
       </div>
+
+      {/* Mobile Menu Drawer (Consistent style) */}
+      {isOpen && (
+        <div className="lg:hidden absolute top-full left-0 w-full bg-[#0d0d0d] py-6 px-6 flex flex-col space-y-5 border-t border-white/5 shadow-2xl">
+          {navLinks.map((link) => (
+            <a 
+              key={link.name} 
+              href={link.href}
+              onClick={(e) => handleScroll(e, link.href)}
+              className="text-white text-xs font-bold uppercase tracking-widest hover:text-[#BC9A6C]"
+            >
+              {link.name}
+            </a>
+          ))}
+        </div>
+      )}
     </nav>
-  );
+  ); 
 }
