@@ -23,56 +23,57 @@ const features = [
 
 export default function WhyChooseUs() {
   return (
-    <section className="py-16 lg:py-20 px-6 lg:px-20 bg-white overflow-hidden">
-      {/* Container reduced to 5xl for a tighter, centered feel */}
-      <div className="max-w-5xl mx-auto grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+    <section id="why-choose-us" className="py-16 lg:py-20 px-6 lg:px-20 bg-white">
+      <div className="max-w-5xl mx-auto grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
         
-        {/* LEFT SIDE: Scaled down Image & Testimonial */}
-        <div className="relative h-[450px] lg:h-[500px] w-full flex justify-center lg:justify-start">
-          <div className="relative w-full h-full lg:w-[90%]">
+        {/* LEFT SIDE: Image Container */}
+        <div className="relative w-full">
+          <div className="relative aspect-[4/3] lg:aspect-[4/5] w-full overflow-hidden rounded-sm group shadow-lg">
             <Image 
               src="/images/img-7.png" 
               alt="Coffee Brewing" 
               fill 
-              className="object-cover rounded-sm shadow-md"
+              className="object-cover"
+              priority
             />
-          </div>
 
-          {/* Scaled down Testimonial Box */}
-          <div className="absolute -bottom-6 left-4 right-4 lg:left-8 lg:-right-4 bg-white p-6 shadow-xl z-20 border-l-4 border-[#BC9A6C]">
-            <p className="text-gray-500 italic text-[13px] leading-relaxed mb-3">
-              "Sed massa turpis pulvinar interdum in imperdiet pellentesque. At duis dolor massa elit consequat."
-            </p>
-            <h4 className="font-bold text-[#1a1a1a] text-sm tracking-wide">Alen Barg</h4>
+            {/* TESTIMONIAL OVERLAY: Positioned exactly like your screenshot */}
+            <div className="absolute bottom-4 left-4 right-4 bg-white p-6 lg:p-8 rounded-sm shadow-xl z-10">
+              <p className="text-gray-600 text-[13px] lg:text-[14px] leading-relaxed mb-4">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed massa turpis pulvinar interdum in imperdiet pellentesque. At duis dolor massa elit consequat
+              </p>
+              <h4 className="font-bold text-[#1a1a1a] text-sm lg:text-base">
+                Alen Barg
+              </h4>
+            </div>
           </div>
         </div>
 
-        {/* RIGHT SIDE: CONTENT & FEATURES */}
-        <div className="space-y-6 text-center lg:text-left">
-          {/* Matching the "About Us" small label style */}
-          <div className="flex items-center justify-center lg:justify-start gap-2">
-            <span className="text-[#BC9A6C] font-semibold tracking-[0.15em] uppercase text-[10px] lg:text-[11px]">
+        {/* RIGHT SIDE: Content */}
+        <div className="space-y-6">
+          <div className="flex items-center gap-2">
+            <span className="text-[#BC9A6C] font-semibold tracking-[0.15em] uppercase text-[11px]">
               Why Choose us
             </span>
-            <div className="h-[1px] w-8 bg-[#BC9A6C]/70"></div>
+            <div className="h-[1px] w-8 bg-[#BC9A6C]"></div>
           </div>
 
           <h2 className="text-3xl lg:text-4xl font-bold leading-tight text-[#1a1a1a]">
             Best quality food and <br className="hidden lg:block" /> coffee maker
           </h2>
 
-          <p className="text-gray-500 text-[13px] leading-relaxed max-w-md mx-auto lg:mx-0">
+          <p className="text-gray-500 font-bold text-[13px] leading-relaxed max-w-md">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque diam pellentesque bibendum non dui volutpat fringilla bibendum.
           </p>
 
-          {/* Features List scaled down */}
-          <div className="space-y-6 pt-2">
+          {/* Features */}
+          <div className="space-y-6 pt-4">
             {features.map((item, index) => (
-              <div key={index} className="flex flex-col lg:flex-row items-center lg:items-start gap-4">
-                <div className="flex-shrink-0 w-12 h-12 bg-[#BC9A6C] rounded-sm flex items-center justify-center shadow-md">
+              <div key={index} className="flex items-start gap-4">
+                <div className="flex-shrink-0 w-12 h-12 bg-[#BC9A6C] rounded-sm flex items-center justify-center">
                   {item.icon}
                 </div>
-                <div className="max-w-xs">
+                <div>
                   <h3 className="text-lg font-bold text-[#1a1a1a] mb-1">{item.title}</h3>
                   <p className="text-gray-500 text-[12px] font-bold leading-snug">
                     {item.desc}
