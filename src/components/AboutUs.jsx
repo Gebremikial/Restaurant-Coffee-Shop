@@ -9,7 +9,7 @@ export default function AboutUs() {
         
         {/* Left Side: Compact Overlapping Image Layout */}
         <div className="relative flex justify-center lg:justify-start">
-          <div className="relative w-[85%] aspect-square lg:w-[85%]">
+          <div className="relative w-[85%] aspect-square lg:w-[88%]">
             <Image 
               src="/images/img-4.png" 
               alt="Pouring Milk" 
