@@ -24,25 +24,25 @@ const features = [
 export default function WhyChooseUs() {
   return (
     <section id="why-choose-us" className="py-24 lg:py-32 px-6 lg:px-20 bg-white">
-      <div className="max-w-5xl mx-auto grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+      <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
         
-        {/* LEFT SIDE: Image Container */}
-        <div className="relative w-full">
+        {/* LEFT SIDE: Image with Floating Testimonial */}
+        <div className="relative pb-12 lg:pb-0"> 
           {/* Main Image Wrapper */}
-          <div className="relative aspect-[4/3] lg:aspect-[4/5] w-full rounded-sm shadow-lg">
+          <div className="relative aspect-[4/5] w-full rounded-sm shadow-lg overflow-hidden">
             <Image 
               src="/images/img-7.png" 
               alt="Coffee Brewing" 
               fill 
-              className="object-cover rounded-sm"
+              className="object-cover"
               priority
             />
           </div>
 
-          {/* TESTIMONIAL BOX: Positioned outside to overlap the bottom center */}
-          <div className="absolute -bottom-10 left-1/2 -translate-x-1/2 w-[90%] md:w-[85%] bg-white p-6 lg:p-8 rounded-sm shadow-2xl z-10 border border-gray-100">
-            <p className="text-gray-600 text-[13px] lg:text-[14px] leading-relaxed mb-4 italic">
-              "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed massa turpis pulvinar interdum in imperdiet pellentesque. At duis dolor massa elit consequat"
+          {/* TESTIMONIAL BOX: Floating overlay exactly like screenshot */}
+          <div className="absolute bottom-6 left-1/2 -translate-x-1/2 w-[90%] bg-white p-6 lg:p-8 rounded-sm shadow-2xl z-20">
+            <p className="text-gray-600 text-[13px] lg:text-[14px] leading-relaxed mb-4">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed massa turpis pulvinar interdum in imperdiet pellentesque. At duis dolor massa elit consequat
             </p>
             <h4 className="font-bold text-[#1a1a1a] text-sm lg:text-base">
               Alen Barg
@@ -53,25 +53,25 @@ export default function WhyChooseUs() {
         {/* RIGHT SIDE: Content */}
         <div className="space-y-6 lg:pl-10">
           <div className="flex items-center gap-2">
-            <span className="text-[#BC9A6C] font-semibold tracking-[0.15em] uppercase text-[11px]">
+            <span className="text-[#BC9A6C] font-semibold tracking-[0.2em] uppercase text-[11px]">
               Why Choose us
             </span>
             <div className="h-[1px] w-8 bg-[#BC9A6C]"></div>
           </div>
 
           <h2 className="text-3xl lg:text-4xl font-bold leading-tight text-[#1a1a1a]">
-            Best quality food and <br className="hidden lg:block" /> coffee maker
+            Best quality food and <br className="hidden lg:block" /> leading coffee maker
           </h2>
 
           <p className="text-gray-500 font-bold text-[13px] leading-relaxed max-w-md">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque diam pellentesque bibendum non dui volutpat fringilla bibendum.
           </p>
 
-          {/* Features */}
-          <div className="space-y-6 pt-4">
+          {/* Features List */}
+          <div className="space-y-8 pt-4">
             {features.map((item, index) => (
               <div key={index} className="flex items-start gap-4">
-                <div className="flex-shrink-0 w-12 h-12 bg-[#BC9A6C] rounded-sm flex items-center justify-center">
+                <div className="flex-shrink-0 w-12 h-12 bg-[#BC9A6C] rounded-sm flex items-center justify-center shadow-md">
                   {item.icon}
                 </div>
                 <div>
