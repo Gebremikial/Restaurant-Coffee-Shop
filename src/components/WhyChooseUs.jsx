@@ -23,34 +23,35 @@ const features = [
 
 export default function WhyChooseUs() {
   return (
-    <section id="why-choose-us" className="py-16 lg:py-20 px-6 lg:px-20 bg-white">
-      <div className="max-w-5xl mx-auto grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+    <section id="why-choose-us" className="py-24 lg:py-32 px-6 lg:px-20 bg-white">
+      <div className="max-w-5xl mx-auto grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
         
         {/* LEFT SIDE: Image Container */}
         <div className="relative w-full">
-          <div className="relative aspect-[4/3] lg:aspect-[4/5] w-full overflow-hidden rounded-sm group shadow-lg">
+          {/* Main Image Wrapper */}
+          <div className="relative aspect-[4/3] lg:aspect-[4/5] w-full rounded-sm shadow-lg">
             <Image 
               src="/images/img-7.png" 
               alt="Coffee Brewing" 
               fill 
-              className="object-cover"
+              className="object-cover rounded-sm"
               priority
             />
+          </div>
 
-            {/* TESTIMONIAL OVERLAY: Positioned exactly like your screenshot */}
-            <div className="absolute bottom-4 left-4 right-4 bg-white p-6 lg:p-8 rounded-sm shadow-xl z-10">
-              <p className="text-gray-600 text-[13px] lg:text-[14px] leading-relaxed mb-4">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed massa turpis pulvinar interdum in imperdiet pellentesque. At duis dolor massa elit consequat
-              </p>
-              <h4 className="font-bold text-[#1a1a1a] text-sm lg:text-base">
-                Alen Barg
-              </h4>
-            </div>
+          {/* TESTIMONIAL BOX: Positioned outside to overlap the bottom center */}
+          <div className="absolute -bottom-10 left-1/2 -translate-x-1/2 w-[90%] md:w-[85%] bg-white p-6 lg:p-8 rounded-sm shadow-2xl z-10 border border-gray-100">
+            <p className="text-gray-600 text-[13px] lg:text-[14px] leading-relaxed mb-4 italic">
+              "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed massa turpis pulvinar interdum in imperdiet pellentesque. At duis dolor massa elit consequat"
+            </p>
+            <h4 className="font-bold text-[#1a1a1a] text-sm lg:text-base">
+              Alen Barg
+            </h4>
           </div>
         </div>
 
         {/* RIGHT SIDE: Content */}
-        <div className="space-y-6">
+        <div className="space-y-6 lg:pl-10">
           <div className="flex items-center gap-2">
             <span className="text-[#BC9A6C] font-semibold tracking-[0.15em] uppercase text-[11px]">
               Why Choose us
